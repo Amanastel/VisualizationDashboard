@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class DataEntity {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "end_year")
@@ -34,7 +35,7 @@ public class DataEntity {
     @Column(name = "topic")
     private String topic;
 
-    @Column(name = "insight")
+    @Column(name = "insight",length = 512)
     private String insight;
 
     @Column(name = "swot")
@@ -73,7 +74,7 @@ public class DataEntity {
     @Column(name = "source")
     private String source;
 
-    @Column(name = "title")
+    @Column(name = "title", length = 512)
     private String title;
 
     @Column(name = "likelihood")
