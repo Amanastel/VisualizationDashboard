@@ -112,6 +112,22 @@ The following technologies, libraries, and frameworks are used in this project:
 
 These technologies work together to create a robust Java application for managing and searching data entities.
 
+## Contributing
+
+We welcome contributions to improve this project. To contribute, please follow these steps:
+
+1. Fork this repository.
+2. Create a new branch for your feature or bug fix: `git checkout -b feature-name`
+3. Make your changes and commit them: `git commit -m 'Add feature'`
+4. Push your changes to your fork: `git push origin feature-name`
+5. Create a pull request from your fork to this repository.
+
+Please provide a clear description of your changes, and make sure your code follows the project's coding standards.
+
+## License
+
+This project is licensed under the [License Name](LICENSE).
+
 
 ## Contact
 
