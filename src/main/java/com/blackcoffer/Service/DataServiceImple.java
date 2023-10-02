@@ -5,6 +5,9 @@ import com.blackcoffer.model.DataEntity;
 import com.blackcoffer.repository.DataRepository;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -142,5 +145,15 @@ public class DataServiceImple implements DataService {
             throw new DataEntityException("Error while searching DataEntities");
         }
 
+    }
+
+
+    @Override
+    public List<DataEntity> getAllData(Integer pageNumber, Integer numberOfRecord) {
+        Pageable pageable = PageRequest.of(pageNumber-1, numberOfRecord);
+
+        Page<DataEntity> page = DataRepository.findAll(pageable);
+        List<DataEntity> data = page.getContent();
+        return data;
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,6 +19,8 @@ public class InvestigationController {
 
     @Autowired
     private DataService investigationService;
+
+    private DataService dataService;
 
     @GetMapping("/search")
     public ResponseEntity<List<?>> searchInvestigations(
@@ -67,10 +70,19 @@ public class InvestigationController {
         filter.setTitle(title);
         filter.setLikelihood(likelihood);
 
+
         List<DataEntity> list = investigationService.searchInvestigations(filter);
 
         for (DataEntity inve : list) System.out.println(inve);
 
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
+
+    @GetMapping("/data/{numberOfRecord}")
+    public ResponseEntity<List<?>> getInvestigations(@PathVariable Integer numberOfRecord, @RequestParam Integer page) {
+        List<DataEntity> data = dataService.getAllData(page, numberOfRecord);
+        return ResponseEntity.status(HttpStatus.OK).body(data);
+    }
+
+
 }
