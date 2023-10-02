@@ -16,31 +16,61 @@ import java.util.List;
 @RequestMapping("/api")
 public class InvestigationController {
 
-	@Autowired
-	private DataService investigationService;
-	
-	
-	@GetMapping("/search")
-    public ResponseEntity<List<?>>  searchInvestigations(
+    @Autowired
+    private DataService investigationService;
+
+    @GetMapping("/search")
+    public ResponseEntity<List<?>> searchInvestigations(
             @RequestParam(name = "startYear", required = false) Integer startYear,
             @RequestParam(name = "endYear", required = false) Integer endYear,
             @RequestParam(name = "city", required = false) String city,
-            @RequestParam(name = "topic", required = false) String topic
-
+            @RequestParam(name = "citylng", required = false) Double citylng,
+            @RequestParam(name = "citylat", required = false) Double citylat,
+            @RequestParam(name = "intensity", required = false) String intensity,
+            @RequestParam(name = "sector", required = false) String sector,
+            @RequestParam(name = "topic", required = false) String topic,
+            @RequestParam(name = "insight", required = false) String insight,
+            @RequestParam(name = "swot", required = false) String swot,
+            @RequestParam(name = "url", required = false) String url,
+            @RequestParam(name = "region", required = false) String region,
+            @RequestParam(name = "impact", required = false) String impact,
+            @RequestParam(name = "added", required = false) String added,
+            @RequestParam(name = "published", required = false) String published,
+            @RequestParam(name = "country", required = false) String country,
+            @RequestParam(name = "relevance", required = false) String relevance,
+            @RequestParam(name = "pestle", required = false) String pestle,
+            @RequestParam(name = "source", required = false) String source,
+            @RequestParam(name = "title", required = false) String title,
+            @RequestParam(name = "likelihood", required = false) Integer likelihood
     ) {
-		System.out.println("working....");
+
         DataEntity filter = new DataEntity();
         filter.setStart_year(startYear);
         filter.setEnd_year(endYear);
         filter.setCity(city);
+        filter.setCitylng(citylng);
+        filter.setCitylat(citylat);
+        filter.setIntensity(intensity);
+        filter.setSector(sector);
         filter.setTopic(topic);
-        // Set other filter criteria here
+        filter.setInsight(insight);
+        filter.setSwot(swot);
+        filter.setUrl(url);
+        filter.setRegion(region);
+        filter.setImpact(impact);
+        filter.setAdded(added);
+        filter.setPublished(published);
+        filter.setCountry(country);
+        filter.setRelevance(relevance);
+        filter.setPestle(pestle);
+        filter.setSource(source);
+        filter.setTitle(title);
+        filter.setLikelihood(likelihood);
 
         List<DataEntity> list = investigationService.searchInvestigations(filter);
-        
-        for(DataEntity inve : list) System.out.println(inve);
-        
+
+        for (DataEntity inve : list) System.out.println(inve);
+
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
-	
 }
