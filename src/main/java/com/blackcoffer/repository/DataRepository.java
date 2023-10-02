@@ -2,7 +2,8 @@ package com.blackcoffer.repository;
 
 import com.blackcoffer.model.DataEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface DataRepository extends JpaRepository<DataEntity, Long> {
+public interface DataRepository extends JpaRepository<DataEntity, Long> , JpaSpecificationExecutor<DataEntity> {
 
 }
