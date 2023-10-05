@@ -1,4 +1,4 @@
-# Project Name
+# Visualization Dashboard
 
 This project is a Java application that includes a Spring Boot service for managing data entities, a batch job for importing data from CSV to a database, and a controller for searching data entities based on various criteria.
 
